@@ -798,6 +798,24 @@
   width: 6px;
   z-index: 3;
   overflow: visible !important;
+
+  .clicked {
+    &:before {
+      top: -20px;
+      left: 20px;
+      -webkit-transform: rotate3d(100, 10, 0, 180deg);
+      -moz-transform: rotate3d(100, 10, 0, 180deg);
+      transform: rotate3d(100, 10, 0, 180deg);
+      -webkit-transform-origin: 0% 100%;
+      -moz-transform-origin: 0% 100%;
+      transform-origin: 0% 100%;
+      transition: 0.5s;
+    }
+    &:after {
+      top: 90px;
+      transition: 0.5s;
+    }
+  }
 }
 
 #slot-trigger .arm .knob {
@@ -866,14 +884,14 @@
 }
 
 .top-vizor {
-    height: 33.33%;
-    position: absolute;
-    top: 0%;
-    left: 0rem;
-    right: 0.8rem;
-    background-color: white;
-    transition: background-color 1s ease;
-    opacity: .6;
+  height: 33.33%;
+  position: absolute;
+  top: 0%;
+  left: 0rem;
+  right: 0.8rem;
+  background-color: white;
+  transition: background-color 1s ease;
+  opacity: 0.6;
 }
 .center-vizor {
   border-top: 1px solid #ccc;
@@ -885,7 +903,7 @@
   right: 0.8rem;
   background-color: white;
   transition: background-color 1s ease;
-  opacity: .6;
+  opacity: 0.6;
 }
 .bot-vizor {
   height: 33.33%;
@@ -895,5 +913,5 @@
   right: 0.8rem;
   background-color: white;
   transition: background-color 1s ease;
-  opacity: .6;
+  opacity: 0.6;
 }

@@ -77,7 +77,7 @@
     <section class="slot-reel-container">
       <div class="depth-giver">
         <div class="reel-container">
-          <div #reel1 class="reel">
+          <div #wheel1 class="reel">
             <img [attr.data-position]="4" src="/assets/images/Cherry.png" alt="3 BAR image">
             <img [attr.data-position]="3" src="/assets/images/3xBAR.png" alt="BAR image">
             <img [attr.data-position]="1" src="/assets/images/7.png" alt="7 image">
@@ -86,7 +86,7 @@
           </div>
         </div>
         <div class="reel-container">
-          <div #reel2 class="reel">
+          <div #wheel3 class="reel">
             <img [attr.data-position]="4" src="/assets/images/Cherry.png" alt="3 BAR image">
             <img [attr.data-position]="3" src="/assets/images/3xBAR.png" alt="BAR image">
             <img [attr.data-position]="1" src="/assets/images/7.png" alt="7 image">
@@ -95,7 +95,7 @@
           </div>
         </div>
         <div class="reel-container">
-          <div #reel3 class="reel">
+          <div #wheel3 class="reel">
             <img [attr.data-position]="4" src="/assets/images/Cherry.png" alt="3 BAR image">
             <img [attr.data-position]="3" src="/assets/images/3xBAR.png" alt="BAR image">
             <img [attr.data-position]="1" src="/assets/images/7.png" alt="7 image">
@@ -128,8 +128,8 @@
         </div>
       </div> -->
       <div id="slot-trigger">
-        <div class="arm">
-          <div class="knob" (click)="startSpinning()"></div>
+        <div class="arm clicked" (click)="!isSpinning && knobPulled()" >
+          <div class="knob"></div>
         </div>
         <div class="arm-shadow"></div>
         <div class="ring1">

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import { BG_COLOR } from './shared/color';
 
@@ -12,17 +12,22 @@ export class AppComponent {
   public playerScore = 10;
   public knobClicked = false;
   public isSpinning = false;
-  public debugMode = false;
+
   public bgColorCombination = BG_COLOR.WHITE;
   public backgroundOfTopLine = '#00a1ff';
   public backgroundOfCentralLine = '#00a1ff';
   public backgroundOfBotLine = '#00a1ff';
   public debitedMoney: number | string = 0;
+  public debugMode: boolean = false;
   public showDebitMoney = false;
 
   private knobPullSound = '../../../assets/audio/knob-pull.mp3';
   private spinningSound = '../../../assets/audio/spinning.mp3';
   private payOutSound = '../../../assets/audio/pay-out.mp3';
+
+  @ViewChild('wheel1', { static: false }) wheel1;
+  @ViewChild('wheel2', { static: false }) wheel2;
+  @ViewChild('wheel3', { static: false }) wheel3;
 
   public knobPulled() {
     if (this.playerScore > 0) {
@@ -30,8 +35,9 @@ export class AppComponent {
       this.showDebitMoney = false;
       this.isSpinning = true;
       this.reset();
+      this.resetBgColor();
       this.knobPullPlay(this.knobPullSound);
-      setTimeout(() => (this.knobClicked = false), 500);
+      setTimeout(()=> this.knobClicked = false, 1500);
       setTimeout(() => {
         this.startSpinning();
       }, 1000);
@@ -43,7 +49,13 @@ export class AppComponent {
   }
 
   private startSpinning() {
-   // this.spinningPlay(this.spinningSound);
+    // const desiredPositionForReel1 =
+    //   (this.debugMode && this.debugLine) || Math.floor(Math.random() * 5) + 1;
+    // const desiredPositionForReel2 =
+    //   (this.debugMode && this.debugLine) || Math.floor(Math.random() * 5) + 1;
+    // const desiredPositionForReel3 =
+    //   (this.debugMode && this.debugLine) || Math.floor(Math.random() * 5) + 1;
+    this.spinningPlay(this.spinningSound);
   }
 
   private knobPullPlay(src) {
@@ -64,4 +76,8 @@ export class AppComponent {
   }
 
   private reset() {}
+
+  private resetBgColor() {
+    this.bgColorCombination = 'white';
+  }
 }
