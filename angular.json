@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "slot-fun"
+    }
+  },
+  "defaultProject": "slot-fun",
+  "cli": {
+    "analytics": false
+  }
 }
