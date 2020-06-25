@@ -1,4 +1,5 @@
 <section class="slot-main-container">
+  <h1 class="slot-tittle">SLOT-FUN</h1>
   <div>
     <div class="win-condition-container">
 
@@ -61,13 +62,6 @@
             *ngIf="debitedMoney !== -1">{{debitedMoney}}</span>
           <input type="number" class="balance" [(ngModel)]="playerScore" [disabled]="isSpinning">
 
-          <div id="slot-display">
-            <div id="slot-overlay"></div>
-            <div id="slot-overlay-line"></div>
-            <div id="slot-credits">15</div>
-            <div id="slot-zeros">00000000000</div>
-
-          </div>
         </div>
 
 
@@ -80,8 +74,8 @@
           <div #wheelCell1 class="wheel">
             <img [attr.data-position]="4" src="/assets/images/Cherry.png" alt="3 BAR image">
             <img [attr.data-position]="3" src="/assets/images/3xBAR.png" alt="BAR image">
-            <img [attr.data-position]="1" src="/assets/images/7.png" alt="7 image">
-            <img [attr.data-position]="2" src="/assets/images/2xBAR.png" alt="2 BAR image">
+            <img [attr.data-position]="2" src="/assets/images/7.png" alt="7 image">
+            <img [attr.data-position]="1" src="/assets/images/2xBAR.png" alt="2 BAR image">
             <img [attr.data-position]="5" src="/assets/images/BAR.png" alt="Cherry image">
           </div>
         </div>
@@ -89,8 +83,8 @@
           <div #wheelCell2 class="wheel">
             <img [attr.data-position]="4" src="/assets/images/Cherry.png" alt="3 BAR image">
             <img [attr.data-position]="3" src="/assets/images/3xBAR.png" alt="BAR image">
-            <img [attr.data-position]="1" src="/assets/images/7.png" alt="7 image">
-            <img [attr.data-position]="2" src="/assets/images/2xBAR.png" alt="2 BAR image">
+            <img [attr.data-position]="2" src="/assets/images/7.png" alt="7 image">
+            <img [attr.data-position]="1" src="/assets/images/2xBAR.png" alt="2 BAR image">
             <img [attr.data-position]="5" src="/assets/images/BAR.png" alt="Cherry image">
           </div>
         </div>
@@ -98,8 +92,8 @@
           <div #wheelCell3 class="wheel">
             <img [attr.data-position]="4" src="/assets/images/Cherry.png" alt="3 BAR image">
             <img [attr.data-position]="3" src="/assets/images/3xBAR.png" alt="BAR image">
-            <img [attr.data-position]="1" src="/assets/images/7.png" alt="7 image">
-            <img [attr.data-position]="2" src="/assets/images/2xBAR.png" alt="2 BAR image">
+            <img [attr.data-position]="2" src="/assets/images/7.png" alt="7 image">
+            <img [attr.data-position]="1" src="/assets/images/2xBAR.png" alt="2 BAR image">
             <img [attr.data-position]="5" src="/assets/images/BAR.png" alt="Cherry image">
           </div>
         </div>
@@ -111,25 +105,7 @@
         <div [ngClass]="{'active': line3Score !== 0 && 
         line3Score === getMaxScore()}" class="wheel-line bottom"></div>
       </div>
-      <!-- <div class="win-red-line first-line" [ngClass]="{'winner': line1Score != 0 && 
-                             line1Score == math.max(line1Score,
-                                            line2Score,
-                                            line3Score)}">
-      </div>
-      <div class="win-red-line second-line" [ngClass]="{'winner': line2Score != 0 && 
-                            line2Score == math.max(line1Score,
-                                           line2Score,
-                                           line3Score)}">
-      </div>
-      <div class="win-red-line third-line" [ngClass]="{'winner': line3Score != 0 && 
-                            line3Score == math.max(line1Score,
-                                           line2Score,
-                                           line3Score)}">
-      </div> -->
-      <!-- <div id="shoulder" (click)="!isSpinning && startReel()">
-        <div id="arm" [ngClass]="{'clicked': armClicked}">
-        </div>
-      </div> -->
+
       <div id="slot-trigger">
         <div class="arm clicked" (click)="!isSpinning && knobPulled()">
           <div class="knob"></div>
@@ -143,5 +119,56 @@
         </div>
       </div>
     </section>
+
+
+    <div class="debug-container">
+      <div class="debug-area">
+        <div class="mode">
+          <input class="tgl tgl-skewed" id="cb3" type="checkbox" [(ngModel)]="debugMode" />
+          <label class="tgl-btn" data-tg-off="RANDOM" data-tg-on="DEBUG" for="cb3">Slot Controls
+          </label>
+        </div>
+        <div class="debug-controls" [ngClass]="{'random-mode': !debugMode}">
+
+
+          <div class="debug-simbols" [ngClass]="{'random-mode': !debugMode}">
+            <img [attr.data-position]="4" draggable="true" id="cherry" (dragstart)="onDragStart($event)"
+              src="/assets/images/Cherry.png" alt="Cherry image">
+            <img [attr.data-position]="3" draggable="true" id="3bar" (dragstart)="onDragStart($event)"
+              src="/assets/images/3xBAR.png" alt="3 BAR image">
+            <img [attr.data-position]="2" draggable="true" id="7" (dragstart)="onDragStart($event)"
+              src="/assets/images/7.png" alt="7 image">
+            <img [attr.data-position]="1" draggable="true" id="2bar" (dragstart)="onDragStart($event)"
+              src="/assets/images/2xBAR.png" alt="2 BAR image">
+            <img [attr.data-position]="5" draggable="true" id="bar" (dragstart)="onDragStart($event)"
+              src="/assets/images/BAR.png" alt="BAR image">
+
+
+
+          </div>
+          <div class="debug-area-bottom">
+            <div class="debug-line-opt-container" [ngClass]="{'random-mode': !debugMode}">
+              <div class="debug-line" [ngClass]="{'active': debugLine == 4}" (click)="debugLine = 4">
+                Top Line
+              </div>
+              <div class="debug-line" [ngClass]="{'active': debugLine == 3}" (click)="debugLine = 3">
+                Center Line
+              </div>
+              <div class="debug-line" [ngClass]="{'active': debugLine == 2}" (click)="debugLine = 2">
+                Bottom Line
+              </div>
+            </div>
+            <div class="debug-reel-container" [ngClass]="{'random-mode': !debugMode}">
+              <div #debugWheel1 class="debug-reel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
+              <div #debugWheel2 class="debug-reel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
+              <div #debugWheel3 class="debug-reel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 </section>
