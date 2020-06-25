@@ -1,9 +1,21 @@
 @import "./shared/scss/variable.scss";
+
+body {
+  font-size: 100%;
+  font-family: Helvetica, Arial, sans-serif;
+  color: black;
+  background: white;
+}
+
 .slot-main-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  .slot-tittle {
+    margin: 20px 10px 15px;
+    padding: 0px 30px 0px 30px;
+  }
 }
 
 .win-condition-container {
@@ -12,15 +24,18 @@
   width: 100%;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(5, 1fr);
-
+  border: 2px solid #ed5d1e;
+  margin-bottom: 15px;
   div {
     height: 25px;
     width: 100%;
-    background-color: white;
+    background-color: $white;
     transition: background-color 1s ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-left: 1px solid $red;
+    border-right: 1px solid $red;
     img {
       width: inherit;
       height: inherit;
@@ -38,36 +53,42 @@
   margin: auto;
   position: relative;
   height: 400px;
-  width: 620px;
+  width: 760px;
   align-items: center;
   background-color: hsl(0, 0%, 90%);
-  background-image: -webkit-repeating-radial-gradient(top left, circle, white, #b9f189 10%, #f5d9d9 20%);
- border: 2px solid #ed5d1e;
+  background-image: -webkit-repeating-radial-gradient(
+    top left,
+    circle,
+    white,
+    #53f7f7 10%,
+    #c3d5f5 20%
+  );
+  border: 2px solid #ed5d1e;
   .depth-giver {
     display: flex;
     justify-content: center;
     -webkit-perspective: 1000px;
     perspective: 1000px;
     .wheel-container {
-      background-color: white;
-      padding: 0.5rem;
-      margin-right: 0.8rem;
       overflow: hidden;
-      height: 335px;
-      transform-style: preserve-3d;
+      padding: 2rem;
       transition: transform 1s;
+      height: 395px;
+      transform-style: preserve-3d;
+      margin-right: 0em;
+
       .wheel {
+        width: 160px;
+        position: relative;
+        background: gray;
         display: flex;
         flex-direction: column;
-        width: 140px;
-        position: relative;
         overflow: hidden;
         height: -webkit-fill-available;
-        background: gray;
-        border-radius: 10% 10% 10% 10% / 50% 10% 10% 50%;
-        box-shadow: inset -5px -4px 12px 5px rgba(0, 0, 0, 0.5);
+        box-shadow: inset 10px 12px 45px rgba(0, 0, 0, 0.5);
         img {
           position: absolute;
+          margin-left: 10px;
           &:nth-child(1) {
             transform: rotateY(0deg) translateY(0);
           }
@@ -88,12 +109,12 @@
     }
   }
   .win-red-line {
+    border-radius: 10px;
+    display: none;
     position: absolute;
     width: 560px;
     height: 125px;
-    // border: 3px solid $light-red;
-    border-radius: 10px;
-    display: none;
+
     &.first-line {
       top: 16px;
     }
@@ -113,7 +134,7 @@
   }
 }
 .slot-top {
-  width: 620px;
+  width: 760px;
   height: 100px;
   display: flex;
   align-items: center;
@@ -121,6 +142,7 @@
   flex-direction: column;
   margin: auto;
   background: $primary-color;
+  border: 2px solid #ed5d1e;
   border-radius: 50% 50% 0 0/100% 100% 0 0;
   .player-score-container {
     position: relative;
@@ -132,21 +154,23 @@
       text-align: center;
       color: $secondary-color;
       position: absolute;
-      right: -5px;
+      right: -15px;
       opacity: 0;
+      top: -30px;
+
       &.fly {
-        animation-name: example;
+        animation-name: animated-money;
         animation-duration: 4s;
         color: $secondary-color;
       }
       &.fly-red {
-        animation-name: example;
+        animation-name: animated-money;
         animation-duration: 4s;
         color: $red;
       }
     }
 
-    @keyframes example {
+    @keyframes animated-money {
       0% {
         transform: translateY(1vh);
         opacity: 1;
@@ -160,14 +184,14 @@
       height: 50px;
       width: 200px;
       border-radius: 15px;
-      
+
       font-weight: 900;
       font-size: 3rem;
       text-align: center;
       color: #78ff00;
 
       line-height: 25px;
-      margin-left: -92px;
+      margin-left: -76px;
       font-family: "Courier New", Courier, monospace;
       font-size: 30px;
       font-weight: 900;
@@ -911,14 +935,14 @@
     position: absolute;
     height: 33.33%;
     top: 0%;
-    left: 8px;
-    right: 21px;
+    left: 31px;
+    right: 32px;
     background-color: transparent;
-    // transition: background-color 1s ease;
     opacity: 0.6;
   }
   &.top {
-    top: 0%;
+    top: 7%;
+    height: 26%;
   }
   &.center {
     border-top: 1px solid $gray;
@@ -926,22 +950,104 @@
     top: 33%;
   }
   &.bottom {
-    top: 67%;
+    top: 66%;
+    height: 28%;
   }
   &.active {
-  
-    background-color: $primary-color;
+    background-color: $red;
     animation: blinker 1s linear infinite;
   }
 }
 @keyframes blinker {
   0% {
-    opacity: 0 
+    opacity: 0;
   }
   50% {
-    opacity: 1 
+    opacity: 1;
   }
   100% {
-    opacity: 0 
+    opacity: 0;
+  }
+}
+
+.debug-container {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  height: 24px;
+  width: 760px;
+
+  .debug-area {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    padding: 1rem 0;
+    border-radius: 15px;
+    background: $white;
+    .random-mode {
+      display: none;
+    }
+    .mode {
+      display: flex;
+      width: 100%;
+      padding: 0 0 1rem 7rem;
+    }
+    div.debug-area-bottom {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      .debug-line-opt-container {
+        margin-right: 1rem;
+        .debug-line {
+          padding: 0.6rem calc(1rem - 2px);
+          text-align: center;
+          font-weight: 900;
+          text-transform: uppercase;
+          font-family: sans-serif;
+          letter-spacing: -1px;
+          cursor: pointer;
+          &.active {
+            border: 2px solid $red;
+            border-radius: 15px;
+          }
+        }
+      }
+      .debug-reel-container {
+        flex-direction: row;
+        display: flex;
+        background: $black;
+        width: 365px;
+        height: fit-content;
+        padding: 0.5rem 0;
+        justify-content: center;
+        .debug-reel {
+          display: flex;
+          flex-direction: column;
+          width: 140px;
+          position: relative;
+          overflow: hidden;
+          height: -webkit-fill-available;
+          background: $gray;
+          border-radius: 10% 10% 10% 10% / 50% 10% 10% 50%;
+          box-shadow: inset -5px -4px 12px 5px rgba(0, 0, 0, 0.5);
+          min-height: 120px;
+          border-radius: 10% 10% 10% 10%/50% 5% 1% 44%;
+          width: 100px;
+          justify-content: center;
+          align-items: center;
+          img {
+            pointer-events: none;
+          }
+        }
+      }
+    }
+    .debug-simbols {
+      display: block;
+    }
+    img {
+      width: 100px;
+    }
   }
 }
