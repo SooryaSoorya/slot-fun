@@ -56,14 +56,13 @@
     <div class="slot-machine">
       <div class="slot-top">
         <div class="player-score-container">
-          <span class="flying-money" [ngClass]="{'fly': showDebitMoney}"
+          <span class="flying-money" [ngClass]="{'animate': showDebitMoney}"
             *ngIf="debitedMoney === -1">{{debitedMoney}}</span>
-          <span class="flying-money" [ngClass]="{'fly-red': showDebitMoney}"
-            *ngIf="debitedMoney !== -1">{{debitedMoney}}</span>
-          <input type="number" class="balance" [(ngModel)]="playerScore" [disabled]="isSpinning">
+          <span class="flying-money" [ngClass]="{'animate-red': showDebitMoney}"
+            *ngIf="debitedMoney !== -1 && debitedMoney !==0 ">{{debitedMoney}}</span>
+          <input type="number" class="playerScore" [(ngModel)]="playerScore" [disabled]="isSpinning">
 
         </div>
-
 
       </div>
     </div>
@@ -122,16 +121,14 @@
 
 
     <div class="debug-container">
-      <div class="debug-area">
-        <div class="mode">
-          <input class="tgl tgl-skewed" id="cb3" type="checkbox" [(ngModel)]="debugMode" />
-          <label class="tgl-btn" data-tg-off="RANDOM" data-tg-on="DEBUG" for="cb3">Slot Controls
+      <div class="debug-wrapper">
+        <div class="debug-mode">
+          <input id="debug-cb" type="checkbox" [(ngModel)]="debugMode" />
+          <label class="debug-toggle-btn" for="debug-cb">Debug
           </label>
         </div>
-        <div class="debug-controls" [ngClass]="{'random-mode': !debugMode}">
-
-
-          <div class="debug-simbols" [ngClass]="{'random-mode': !debugMode}">
+        <div class="debug-controls" [ngClass]="{'random': !debugMode}">
+          <div class="debug-image-container" [ngClass]="{'random': !debugMode}">
             <img [attr.data-position]="4" draggable="true" id="cherry" (dragstart)="onDragStart($event)"
               src="/assets/images/Cherry.png" alt="Cherry image">
             <img [attr.data-position]="3" draggable="true" id="3bar" (dragstart)="onDragStart($event)"
@@ -142,12 +139,9 @@
               src="/assets/images/2xBAR.png" alt="2 BAR image">
             <img [attr.data-position]="5" draggable="true" id="bar" (dragstart)="onDragStart($event)"
               src="/assets/images/BAR.png" alt="BAR image">
-
-
-
           </div>
           <div class="debug-area-bottom">
-            <div class="debug-line-opt-container" [ngClass]="{'random-mode': !debugMode}">
+            <div class="debug-line-opt-container" [ngClass]="{'random': !debugMode}">
               <div class="debug-line" [ngClass]="{'active': debugLine == 4}" (click)="debugLine = 4">
                 Top Line
               </div>
@@ -158,10 +152,10 @@
                 Bottom Line
               </div>
             </div>
-            <div class="debug-reel-container" [ngClass]="{'random-mode': !debugMode}">
-              <div #debugWheel1 class="debug-reel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
-              <div #debugWheel2 class="debug-reel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
-              <div #debugWheel3 class="debug-reel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
+            <div class="debug-wheel-container" [ngClass]="{'random': !debugMode}">
+              <div #debugWheel1 class="debug-wheel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
+              <div #debugWheel2 class="debug-wheel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
+              <div #debugWheel3 class="debug-wheel" (dragover)="onDragOver($event)" (drop)="onDrop($event)"></div>
             </div>
           </div>
         </div>
