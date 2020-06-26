@@ -1,6 +1,7 @@
 {
   "name": "slot-fun",
   "version": "0.0.0",
+  "homepage": "https://sooryasoorya.github.io/slot-fun/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
