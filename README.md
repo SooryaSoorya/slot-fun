@@ -1,4 +1,6 @@
 # SlotFun
+[Live Demo](https://sooryasoorya.github.io/slot-fun/)
+New ideas/improvements are added in the bottom of this page
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9.
 
@@ -14,14 +16,17 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Deployment to github
+
+[Deployed the app to GitHub Manually](https://codinglatte.com/posts/angular/deploying-angular-apps-github-pages/)
+
+## Ideas
+
+-Only winning condition is added and implemented from requirement, Its great idea to add fail(lose) too
+-Desktop design only provided, not apt for small devices
+-Better user interface ideas can be implement
+
